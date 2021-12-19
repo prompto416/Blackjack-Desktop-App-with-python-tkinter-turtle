@@ -1,6 +1,7 @@
 import random
 import abc
 
+
 class Deck:
 
     def __init__(self):
@@ -79,12 +80,13 @@ class Dealer(Player):
     def __init__(self):
         super().__init__()
         self.initializeHand()
+
     def initializeHand(self):
         self.Hit()
     def dealerPlay(self):
         b = self.evalHand()
         if b < 5:
-            dealerChoice = random.choice([2,3])
+            dealerChoice = 2
         elif b > 5 and b < 14:
             dealerChoice = 2
 
@@ -93,10 +95,11 @@ class Dealer(Player):
         elif b > 17:
             dealerChoice = 0
         else:
-            dealerChoice= random.choice([0,1,2,3])
+            dealerChoice= random.choice([0,1,2])
 
-        for i in range(dealerChoice):
-            self.Hit()
+        return dealerChoice
+
+
 
 
 
@@ -124,13 +127,7 @@ def gameCheck(p1,p2):
     elif (bustCheck(p1) and bustCheck(p2)) == True:
         print('Still, You LOSE!')
         return True
-def winCheck(p1,p2):
-    if p1 > p2:
-        print('You WIN')
-    elif p1 == p2:
-        print('ITS A DRAW!')
-    else:
-        print('You LOSE!')
+
 def blackjack(p1,p2):
     if p1 == 21 and p2 != 21:
         print('You WIN')
@@ -145,122 +142,61 @@ def blackjack(p1,p2):
         print('Still,You LOSE')
         return True
 
-# p1 = BlackjackPlayer()
-# dealer = Dealer()
+# def main():
+#     p1 = BlackjackPlayer()
+#     dealer = Dealer()
 #
-# cmd = 0
-# while cmd != 'q':
-#     a = p1.evalHand()
-#     b = dealer.evalHand()
+#     cmd = 0
+#     while cmd != 'q':
+#         a = p1.evalHand()
+#         b = dealer.evalHand()
 #
-#
-#
-#
-#
-#
-#
-#     print(f"Your Score: {p1.evalHand()}")
-#     print(f"Your Hand: {p1.seeHand()}")
-#     print(f"Dealer Score: {dealer.evalHand()}")
-#     print(f"Dealer Hand: {dealer.seeHand()}")
-#
-#
-#     if  blackjack(a,b) == True:
-#         p1.restartHand()
-#         dealer.restartHand()
-#         continue
-#     if gameCheck(a,b) == True:
-#         p1.restartHand()
-#         dealer.restartHand()
-#         continue
-#
-#     cmd = input("Enter your command: ")
-#     if cmd == 'h':
-#         p1.Hit()
-#
-#
-#
-#
-#     elif cmd == 's':
-#         dealer.dealerPlay()
+#         print(f"Your Score: {p1.evalHand()}")
+#         print(f"Your Hand: {p1.seeHand()}")
 #         print(f"Dealer Score: {dealer.evalHand()}")
 #         print(f"Dealer Hand: {dealer.seeHand()}")
 #
-#         if gameCheck(p1.evalHand(),dealer.evalHand()) == True:
-#             pass
+#         if blackjack(a, b) == True:
+#             p1.restartHand()
+#             dealer.restartHand()
+#             continue
+#         if gameCheck(a, b) == True:
+#             p1.restartHand()
+#             dealer.restartHand()
+#             continue
 #
-#         else:
-#             if p1.evalHand() > dealer.evalHand():
-#                 print('You WIN')
-#             elif p1.evalHand() == dealer.evalHand():
-#                 print('ITS A DRAW!')
+#         cmd = input("Enter your command: ")
+#         if cmd == 'h':
+#             p1.Hit()
+#
+#
+#
+#
+#         elif cmd == 's':
+#             dealer.dealerPlay()
+#             print(f"Dealer Score: {dealer.evalHand()}")
+#             print(f"Dealer Hand: {dealer.seeHand()}")
+#
+#             if gameCheck(p1.evalHand(), dealer.evalHand()) == True:
+#                 pass
+#
 #             else:
-#                 print('You LOSE!')
+#                 if p1.evalHand() > dealer.evalHand():
+#                     print('You WIN')
+#                 elif p1.evalHand() == dealer.evalHand():
+#                     print('ITS A DRAW!')
+#                 else:
+#                     print('You LOSE!')
 #
+#             p1.restartHand()
+#             dealer.restartHand()
 #
-#         p1.restartHand()
-#         dealer.restartHand()
+#         elif cmd == 'q':
+#             pass
+#         else:
+#             print('Invalid Input')
+#             continue
 #
-#     elif cmd == 'q':
-#         pass
-#     else:
-#         print('Invalid Input')
-#         continue
-
-def main():
-    p1 = BlackjackPlayer()
-    dealer = Dealer()
-
-    cmd = 0
-    while cmd != 'q':
-        a = p1.evalHand()
-        b = dealer.evalHand()
-
-        print(f"Your Score: {p1.evalHand()}")
-        print(f"Your Hand: {p1.seeHand()}")
-        print(f"Dealer Score: {dealer.evalHand()}")
-        print(f"Dealer Hand: {dealer.seeHand()}")
-
-        if blackjack(a, b) == True:
-            p1.restartHand()
-            dealer.restartHand()
-            continue
-        if gameCheck(a, b) == True:
-            p1.restartHand()
-            dealer.restartHand()
-            continue
-
-        cmd = input("Enter your command: ")
-        if cmd == 'h':
-            p1.Hit()
-
-
-
-
-        elif cmd == 's':
-            dealer.dealerPlay()
-            print(f"Dealer Score: {dealer.evalHand()}")
-            print(f"Dealer Hand: {dealer.seeHand()}")
-
-            if gameCheck(p1.evalHand(), dealer.evalHand()) == True:
-                pass
-
-            else:
-                if p1.evalHand() > dealer.evalHand():
-                    print('You WIN')
-                elif p1.evalHand() == dealer.evalHand():
-                    print('ITS A DRAW!')
-                else:
-                    print('You LOSE!')
-
-            p1.restartHand()
-            dealer.restartHand()
-
-        elif cmd == 'q':
-            pass
-        else:
-            print('Invalid Input')
-            continue
 
 
 
