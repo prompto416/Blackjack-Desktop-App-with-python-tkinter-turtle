@@ -35,7 +35,12 @@ class BlackJackScreen:
         yourlst = self.displayHand(yourHand)
 
         dealst = self.displayHand(dealerHand)
-        winsound.PlaySound('swipe', winsound.SND_FILENAME)
+        try:
+            winsound.PlaySound('swipe', winsound.SND_FILENAME)
+        except:
+            print('Warning: Missing Audio File')
+
+
 
         self.t.speed(5)
         self.screen.addshape('cardbacktest.gif')
@@ -118,14 +123,24 @@ class BlackJackScreen:
         card = card[0]+str(card[1])+'.gif'
         try:
             self.t.shape(card)
-            winsound.PlaySound('swipe', winsound.SND_FILENAME)
+            try:
+                winsound.PlaySound('swipe', winsound.SND_FILENAME)
+            except:
+                print('Warning: Missing Audio File')
+
+
             self.t.forward(400)
             self.t.stamp()
         except:
 
             self.screen.addshape(card)
             self.t.shape(card)
-            winsound.PlaySound('swipe', winsound.SND_FILENAME)
+            try:
+                winsound.PlaySound('swipe', winsound.SND_FILENAME)
+            except:
+                print('Warning: Missing Audio File')
+
+
             self.t.forward(400)
             self.t.stamp()
     def dealerHit(self,card):
@@ -145,7 +160,13 @@ class BlackJackScreen:
             self.t.stamp()
 
     def RestartScreen(self):
-        winsound.PlaySound('level',winsound.SND_FILENAME)
+        try:
+            winsound.PlaySound('level', winsound.SND_FILENAME)
+        except:
+            print('Warning: Missing Audio File')
+
+
+
         self.hitCount = -300
         self.updateCount = 90
         self.dealerCount = -400
@@ -162,7 +183,13 @@ class BlackJackScreen:
             self.t.write(str(self.player.evalHand())+" Busted!!" , font=("Courier New", 16, "bold"))
             self.t.goto(-160,0)
             self.t.write("YOU LOSE!!" , font=("Courier New", 40, "bold"))
-            winsound.PlaySound('lose', winsound.SND_FILENAME)
+            try:
+                winsound.PlaySound('lose', winsound.SND_FILENAME)
+            except:
+                print('Warning: Missing Audio File')
+
+
+
 
         else:
             self.t.color('black')
@@ -183,7 +210,13 @@ class BlackJackScreen:
             self.t.write(','+str(self.dealer.evalHand()) +"Busted", font=("Courier New", 16, "bold"))
             self.t.goto(-160,0)
             self.t.write("YOU WIN!!" , font=("Courier New", 40, "bold"))
-            winsound.PlaySound('win', winsound.SND_FILENAME)
+            try:
+                winsound.PlaySound('win', winsound.SND_FILENAME)
+            except:
+                print('Warning: Missing Audio File')
+
+
+
         else:
             self.t.hideturtle()
             self.t.color('red')
@@ -193,15 +226,32 @@ class BlackJackScreen:
         if det == 1:
             self.t.goto(-160, 0)
             self.t.write("YOU WIN!!", font=("Courier New", 40, "bold"))
-            winsound.PlaySound('win', winsound.SND_FILENAME)
+            try:
+                winsound.PlaySound('win', winsound.SND_FILENAME)
+            except:
+
+                print('Warning: Missing Audio File')
+
+
         elif det == 2:
             self.t.goto(-140, 0)
             self.t.write("DRAW!!", font=("Courier New", 40, "bold"))
-            winsound.PlaySound('win', winsound.SND_FILENAME)
+            try:
+                winsound.PlaySound('win', winsound.SND_FILENAME)
+            except:
+                print('Warning: Missing Audio File')
+
+
         else:
             self.t.goto(-160, 0)
             self.t.write("YOU LOSE!!", font=("Courier New", 40, "bold"))
-            winsound.PlaySound('lose', winsound.SND_FILENAME)
+            try:
+                winsound.PlaySound('lose', winsound.SND_FILENAME)
+            except:
+                print('Warning: Missing Audio File')
+
+
+
 
 
 
