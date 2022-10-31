@@ -1,3 +1,3 @@
-![](blackjack_output1.jpg)
-![](blackjack_output2.jpg)
-![](blackjack_output3.jpg)
+![](blackjack_output1.png)
+![](blackjack_output2.png)
+![](blackjack_output.png)
